@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Авто-мастер | Профессиональный ремонт автомобилей</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#e53935",
+              dark: "#121212",
+              light: "#eeeeee",
+              gray: "#333333",
+              lightgray: "#aaaaaa",
+            },
+            fontFamily: {
+              montserrat: ["Montserrat", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Montserrat", sans-serif;
+        background-color: #121212;
+        color: #eeeeee;
+      }
+      .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(229, 57, 53, 0.2);
+      }
+      .advantage-card:hover {
+        transform: scale(1.03);
+      }
+      .process-step:hover .step-number {
+        background-color: #e53935;
+        color: white;
+      }
+      .service-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.5rem;
+      }
+    </style>
+    <head>
+      <script
+        src="https://api-maps.yandex.ru/2.1/?apikey=ed08fa90-3dd4-40fa-9622-38c2334072ba&lang=ru_RU"
+        type="text/javascript"
+      ></script>
+      <script type="text/javascript">
+        ymaps.ready(init);
+        function init() {
+          var myMap = new ymaps.Map("map", {
+            center: [56.041481, 37.977644],
+            zoom: 16,
+          });
+        }
+      </script>
+    </head>
+  </head>
+  <body class="bg-dark text-light">
+    <!-- Header -->
+    <header class="fixed w-full bg-dark bg-opacity-90 z-50 shadow-md">
+      <div
+        class="container mx-auto px-4 py-3 flex justify-between items-center"
+      >
+        <div class="flex items-center">
+          <div class="text-primary font-bold text-2xl md:text-3xl">
+            АВТО-<span class="text-light">МАСТЕР</span>
+          </div>
+        </div>
+
+        <nav class="hidden md:block">
+          <ul class="flex space-x-6">
+            <li>
+              <a
+                href="#services"
+                class="text-light hover:text-primary transition"
+                >Услуги</a
+              >
+            </li>
+            <li>
+              <a
+                href="#advantages"
+                class="text-light hover:text-primary transition"
+                >Преимущества</a
+              >
+            </li>
+            <li>
+              <a
+                href="#portfolio"
+                class="text-light hover:text-primary transition"
+                >Портфолио</a
+              >
+            </li>
+            <li>
+              <a
+                href="#process"
+                class="text-light hover:text-primary transition"
+                >Процесс</a
+              >
+            </li>
+            <li>
+              <a
+                href="#contact"
+                class="text-light hover:text-primary transition"
+                >Контакты</a
+              >
+            </li>
+          </ul>
+        </nav>
+
+        <div class="flex items-center">
+          <a
+            href="tel:+79778877109"
+            class="text-primary font-semibold hover:text-light transition"
+          >
+            <span class="hidden md:inline">+7 (977) 887-71-09</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6 md:hidden"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+              />
+            </svg>
+          </a>
+
+          <button
+            id="mobile-menu-button"
+            class="ml-4 md:hidden text-light hover:text-primary"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden md:hidden bg-gray-900 pb-4">
+        <ul class="px-4 pt-2 pb-3 space-y-1">
+          <li>
+            <a
+              href="#services"
+              class="block px-3 py-2 text-light hover:text-primary transition"
+              >Услуги</a
+            >
+          </li>
+          <li>
+            <a
+              href="#advantages"
+              class="block px-3 py-2 text-light hover:text-primary transition"
+              >Преимущества</a
+            >
+          </li>
+          <li>
+            <a
+              href="#portfolio"
+              class="block px-3 py-2 text-light hover:text-primary transition"
+              >Портфолио</a
+            >
+          </li>
+          <li>
+            <a
+              href="#process"
+              class="block px-3 py-2 text-light hover:text-primary transition"
+              >Процесс</a
+            >
+          </li>
+          <li>
+            <a
+              href="#contact"
+              class="block px-3 py-2 text-light hover:text-primary transition"
+              >Контакты</a
+            >
+          </li>
+        </ul>
+      </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section
+      class="pt-24 pb-16 md:pt-32 md:pb-24 bg-gradient-to-br from-dark to-gray"
+    >
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row items-center">
+          <div class="md:w-1/2 mb-8 md:mb-0">
+            <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold mb-4">
+              Профессиональный <span class="text-primary">ремонт</span> вашего
+              автомобиля
+            </h1>
+            <!-- <p class="text-lightgray text-lg mb-8">
+              Профессиональный ремонт и обслуживание автомобилей любой сложности
+            </p> -->
+            <div
+              class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4"
+            >
+              <!-- <a
+                href="#contact"
+                class="bg-primary hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-md transition text-center"
+                >Оставить заявку</a
+              > -->
+              <a
+                href="tel:+79778877109"
+                class="bg-primary hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-md transition text-center"
+                >Получить консультацию</a
+              >
+              <a
+                href="#services"
+                class="border border-primary text-primary hover:bg-primary hover:text-white font-semibold py-3 px-6 rounded-md transition text-center"
+                >Наши услуги</a
+              >
+            </div>
+          </div>
+          <div class="md:w-1/2">
+            <img
+              src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80"
+              alt="Автомеханик за работой"
+              class="rounded-lg shadow-xl w-full"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Услуги -->
+    <section id="services" class="py-20 bg-darkgray">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">
+            Наши <span class="text-primary">услуги</span>
+          </h2>
+          <p class="max-w-2xl mx-auto">
+            Мы предлагаем полный спектр услуг по ремонту и обслуживанию
+            автомобилей любых марок и моделей
+          </p>
+        </div>
+
+        <!-- Категории услуг -->
+        <div class="mb-10 flex flex-wrap justify-center gap-4">
+          <button
+            class="service-filter bg-gray active px-4 py-2 rounded-md bg-primary text-white"
+            data-category="all"
+          >
+            Все услуги
+          </button>
+          <button
+            class="service-filter bg-gray px-4 py-2 rounded-md bg-dark hover:bg-primary hover:text-white transition-colors"
+            data-category="engine"
+          >
+            Двигатель
+          </button>
+          <button
+            class="service-filter bg-gray px-4 py-2 rounded-md bg-dark hover:bg-primary hover:text-white transition-colors"
+            data-category="transmission"
+          >
+            Трансмиссия
+          </button>
+          <button
+            class="service-filter bg-gray px-4 py-2 rounded-md bg-dark hover:bg-primary hover:text-white transition-colors"
+            data-category="electric"
+          >
+            Электрика
+          </button>
+          <button
+            class="service-filter bg-gray px-4 py-2 rounded-md bg-dark hover:bg-primary hover:text-white transition-colors"
+            data-category="body"
+          >
+            Кузов
+          </button>
+          <button
+            class="service-filter bg-gray px-4 py-2 rounded-md bg-dark hover:bg-primary hover:text-white transition-colors"
+            data-category="service"
+          >
+            Обслуживание
+          </button>
+        </div>
+
+        <div class="service-grid">
+          <!-- Двигатель -->
+          <div
+            class="service-card bg-gray p-6 rounded-lg transition-all duration-300 border-l-4 border-primary"
+            data-category="engine"
+          >
+            <h3 class="text-xl font-semibold mb-2">Ремонт двигателя</h3>
+            <p class="text-gray-400">
+              Капитальный и текущий ремонт двигателей любой сложности
+            </p>
+          </div>
+
+          <div
+            class="service-card bg-gray p-6 rounded-lg transition-all duration-300 border-l-4 border-primary"
+            data-category="engine"
+          >
+            <h3 class="text-xl font-semibold mb-2">Ремонт ГБЦ</h3>
+            <p class="text-gray-400">Восстановление головки блока цилиндров</p>
+          </div>
+
+          <div
+            class="service-card bg-gray p-6 rounded-lg transition-all duration-300 border-l-4 border-primary"
+            data-category="engine"
+          >
+            <h3 class="text-xl font-semibold mb-2">Замена ГРМ</h3>
+            <p class="text-gray-400">
+              Замена ремня или цепи газораспределительного механизма
+            </p>
+          </div>
+
+          <div
+            class="service-card bg-gray p-6 rounded-lg transition-all duration-300 border-l-4 border-primary"
+            data-category="engine"
+          >
+            <h3 class="text-xl font-semibold mb-2">Ремонт турбокомпрессора</h3>
+            <p class="text-gray-400">Диагностика и ремонт турбин</p>
+          </div>
+
+          <div
+            class="service-card bg-gray p-6 rounded-lg transition-all duration-300 border-l-4 border-primary"
+            data-category="engine"
+          >
+            <h3 class="text-xl font-semibold mb-2">Чистка форсунок</h3>
+            <p class="text-gray-400">
+              Ультразвуковая чистка и проверка форсунок
+            </p>
+          </div>
+
+          <div
+            class="service-card bg-gray p-6 rounded-lg transition-all duration-300 border-l-4 border-primary"
+            data-category="engine"
+          >
+            <h3 class="text-xl font-semibold mb-2">Ремонт форсунок</h3>
+            <p class="text-gray-400">Восстановление и замена форсунок</p>
+          </div>
+
+          <div
+            class="service-card bg-gray p-6 rounded-lg transition-all duration-300 border-l-4 border-primary"
+            data-category="engine"
+          >
+            <h3 class="text-xl font-semibold mb-2">Промывка инжектора</h3>
+            <p class="text-gray-400">
+              Очистка инжекторной системы подачи топлива
+            </p>
+          </div>
+
+          <div
+            class="service-card bg-gray p-6 rounded-lg transition-all duration-300 border-l-4 border-primary"
+            data-category="engine"
+          >
+            <h3 class="text-xl font-semibold mb-2">Ремонт карбюраторов</h3>
+            <p class="text-gray-400">Настройка и ремонт карбюраторных систем</p>
+          </div>
+
+          <div
+            class="service-card bg-gray p-6 rounded-lg transition-all duration-300 border-l-4 border-primary"
+            data-category="engine"
+          >
+            <h3 class="text-xl font-semibold mb-2">Эндоскопия двигателя</h3>
+            <p class="text-gray-400">
+              Визуальная диагностика внутренних частей двигателя
+            </p>
+          </div>
+
+          <div
+            class="service-card bg-gray p-6 rounded-lg transition-all duration-300 border-l-4 border-primary"
+            data-category="engine"
+          >
+            <h3 class="text-xl font-semibold mb-2">Раскоксовка</h3>
+            <p class="text-gray-400">Удаление нагара с поршней и клапанов</p>
+          </div>
+
+          <!-- Трансмиссия -->
+          <div
+            class="service-card bg-gray p-6 rounded-lg transition-all duration-300 border-l-4 border-primary"
+            data-category="transmission"
+          >
+            <h3 class="text-xl font-semibold mb-2">Ремонт АКПП</h3>
+            <p class="text-gray-400">
+              Диагностика и ремонт автоматических коробок передач
+            </p>
+          </div>
+
+          <div
+            class="service-card bg-gray p-6 rounded-lg transition-all duration-300 border-l-4 border-primary"
+            data-category="transmission"
+          >
+            <h3 class="text-xl font-semibold mb-2">Ремонт КПП</h3>
+            <p class="text-gray-400">
+              Восстановление механических коробок передач
+            </p>
+          </div>
+
+          <div
+            class="service-card bg-gray p-6 rounded-lg transition-all duration-300 border-l-4 border-primary"
+            data-category="transmission"
+          >
+            <h3 class="text-xl font-semibold mb-2">Ремонт DSG</h3>
+            <p class="text-gray-400">
+              Ремонт роботизированных коробок с двойным сцеплением
+            </p>
+          </div>
+
+          <div
+            class="service-card bg-gray p-6 rounded-lg transition-all duration-300 border-l-4 border-primary"
+            data-category="transmission"
+          >
+            <h3 class="text-xl font-semibold mb-2">Ремонт РКПП</h3>
+            <p class="text-gray-400">
+              Ремонт раздаточных коробок полноприводных автомобилей
+            </p>
+          </div>
+
+          <div
+            class="service-card bg-gray p-6 rounded-lg transition-all duration-300 border-l-4 border-primary"
+            data-category="transmission"
+          >
+            <h3 class="text-xl font-semibold mb-2">Ремонт карданных валов</h3>
+            <p class="text-gray-400">Балансировка и ремонт карданных передач</p>
+          </div>
+
+          <div
+            class="service-card bg-gray p-6 rounded-lg transition-all duration-300 border-l-4 border-primary"
+            data-category="transmission"
+          >
+            <h3 class="text-xl font-semibold mb-2">Ремонт моста</h3>
+            <p class="text-gray-400">Ремонт ведущих мостов и дифференциалов</p>
+          </div>
+
+          <div
+            class="service-card bg-gray p-6 rounded-lg transition-all duration-300 border-l-4 border-primary"
+            data-category="transmission"
+          >
+            <h3 class="text-xl font-semibold mb-2">Ремонт сцепления</h3>
+            <p class="text-gray-400">Замена и регулировка сцепления</p>
+          </div>
+
+          <!-- Электрика -->
+          <div
+            class="service-card bg-gray p-6 rounded-lg transition-all duration-300 border-l-4 border-primary"
+            data-category="electric"
+          >
+            <h3 class="text-xl font-semibold mb-2">Компьютерная диагностика</h3>
+            <p class="text-gray-400">
+              Диагностика электронных систем автомобиля
+            </p>
+          </div>
+
+          <div
+            class="service-card bg-gray p-6 rounded-lg transition-all duration-300 border-l-4 border-primary"
+            data-category="electric"
+          >
+            <h3 class="text-xl font-semibold mb-2">Ремонт автоэлектрики</h3>
+            <p class="text-gray-400">
+              Диагностика и устранение неисправностей электропроводки
+            </p>
+          </div>
+
+          <div
+            class="service-card bg-gray p-6 rounded-lg transition-all duration-300 border-l-4 border-primary"
+            data-category="electric"
+          >
+            <h3 class="text-xl font-semibold mb-2">Ремонт автоэлектроники</h3>
+            <p class="text-gray-400">Ремонт электронных блоков управления</p>
+          </div>
+
+          <div
+            class="service-card bg-gray p-6 rounded-lg transition-all duration-300 border-l-4 border-primary"
+            data-category="electric"
+          >
+            <h3 class="text-xl font-semibold mb-2">Ремонт стартеров</h3>
+            <p class="text-gray-400">Диагностика и ремонт стартеров</p>
+          </div>
+
+          <div
+            class="service-card bg-gray p-6 rounded-lg transition-all duration-300 border-l-4 border-primary"
+            data-category="electric"
+          >
+            <h3 class="text-xl font-semibold mb-2">Ремонт генераторов</h3>
+            <p class="text-gray-400">Восстановление и замена генераторов</p>
+          </div>
+
+          <div
+            class="service-card bg-gray p-6 rounded-lg transition-all duration-300 border-l-4 border-primary"
+            data-category="electric"
+          >
+            <h3 class="text-xl font-semibold mb-2">Установка сигнализации</h3>
+            <p class="text-gray-400">Монтаж и настройка охранных систем</p>
+          </div>
+
+          <div
+            class="service-card bg-gray p-6 rounded-lg transition-all duration-300 border-l-4 border-primary"
+            data-category="electric"
+          >
+            <h3 class="text-xl font-semibold mb-2">
+              Ремонт подушек безопасности
+            </h3>
+            <p class="text-gray-400">
+              Диагностика и восстановление систем безопасности
+            </p>
+          </div>
+
+          <!-- Кузов -->
+          <div
+            class="service-card bg-gray p-6 rounded-lg transition-all duration-300 border-l-4 border-primary"
+            data-category="body"
+          >
+            <h3 class="text-xl font-semibold mb-2">
+              Ремонт пластиковых бамперов
+            </h3>
+            <p class="text-gray-400">Восстановление и покраска бамперов</p>
+          </div>
+
+          <div
+            class="service-card bg-gray p-6 rounded-lg transition-all duration-300 border-l-4 border-primary"
+            data-category="body"
+          >
+            <h3 class="text-xl font-semibold mb-2">Покраска автомобиля</h3>
+            <p class="text-gray-400">Полная и частичная покраска кузова</p>
+          </div>
+
+          <div
+            class="service-card bg-gray p-6 rounded-lg transition-all duration-300 border-l-4 border-primary"
+            data-category="body"
+          >
+            <h3 class="text-xl font-semibold mb-2">Полировка</h3>
+            <p class="text-gray-400">Восстановление лакокрасочного покрытия</p>
+          </div>
+
+          <div
+            class="service-card bg-gray p-6 rounded-lg transition-all duration-300 border-l-4 border-primary"
+            data-category="body"
+          >
+            <h3 class="text-xl font-semibold mb-2">Ремонт фар</h3>
+            <p class="text-gray-400">Восстановление и полировка фар</p>
+          </div>
+
+          <div
+            class="service-card bg-gray p-6 rounded-lg transition-all duration-300 border-l-4 border-primary"
+            data-category="body"
+          >
+            <h3 class="text-xl font-semibold mb-2">Шумоизоляция</h3>
+            <p class="text-gray-400">Установка шумоизоляционных материалов</p>
+          </div>
+
+          <!-- Обслуживание -->
+          <div
+            class="service-card bg-gray p-6 rounded-lg transition-all duration-300 border-l-4 border-primary"
+            data-category="service"
+          >
+            <h3 class="text-xl font-semibold mb-2">
+              Полное сервисное обслуживание
+            </h3>
+            <p class="text-gray-400">Комплексное обслуживание по регламенту</p>
+          </div>
+
+          <div
+            class="service-card bg-gray p-6 rounded-lg transition-all duration-300 border-l-4 border-primary"
+            data-category="service"
+          >
+            <h3 class="text-xl font-semibold mb-2">Замена масла</h3>
+            <p class="text-gray-400">Замена масла и фильтров</p>
+          </div>
+
+          <div
+            class="service-card bg-gray p-6 rounded-lg transition-all duration-300 border-l-4 border-primary"
+            data-category="service"
+          >
+            <h3 class="text-xl font-semibold mb-2">
+              Заправка и ремонт автокондиционера
+            </h3>
+            <p class="text-gray-400">
+              Диагностика, заправка и ремонт систем кондиционирования
+            </p>
+          </div>
+
+          <div
+            class="service-card bg-gray p-6 rounded-lg transition-all duration-300 border-l-4 border-primary"
+            data-category="service"
+          >
+            <h3 class="text-xl font-semibold mb-2">Ремонт выхлопной системы</h3>
+            <p class="text-gray-400">
+              Ремонт и замена элементов выхлопной системы
+            </p>
+          </div>
+
+          <div
+            class="service-card bg-gray p-6 rounded-lg transition-all duration-300 border-l-4 border-primary"
+            data-category="service"
+          >
+            <h3 class="text-xl font-semibold mb-2">Ремонт тормозной системы</h3>
+            <p class="text-gray-400">Диагностика и ремонт тормозов</p>
+          </div>
+
+          <div
+            class="service-card bg-gray p-6 rounded-lg transition-all duration-300 border-l-4 border-primary"
+            data-category="service"
+          >
+            <h3 class="text-xl font-semibold mb-2">Ремонт ходовой части</h3>
+            <p class="text-gray-400">Диагностика и ремонт подвески</p>
+          </div>
+
+          <div
+            class="service-card bg-gray p-6 rounded-lg transition-all duration-300 border-l-4 border-primary"
+            data-category="service"
+          >
+            <h3 class="text-xl font-semibold mb-2">Ремонт рулевых реек</h3>
+            <p class="text-gray-400">
+              Восстановление и замена рулевых механизмов
+            </p>
+          </div>
+
+          <div
+            class="service-card bg-gray p-6 rounded-lg transition-all duration-300 border-l-4 border-primary"
+            data-category="service"
+          >
+            <h3 class="text-xl font-semibold mb-2">Ремонт топливной системы</h3>
+            <p class="text-gray-400">Диагностика и ремонт топливной системы</p>
+          </div>
+
+          <div
+            class="service-card bg-gray p-6 rounded-lg transition-all duration-300 border-l-4 border-primary"
+            data-category="service"
+          >
+            <h3 class="text-xl font-semibold mb-2">Ремонт авторадиаторов</h3>
+            <p class="text-gray-400">Ремонт и замена радиаторов охлаждения</p>
+          </div>
+
+          <div
+            class="service-card bg-gray p-6 rounded-lg transition-all duration-300 border-l-4 border-primary"
+            data-category="service"
+          >
+            <h3 class="text-xl font-semibold mb-2">Ремонт амортизаторов</h3>
+            <p class="text-gray-400">Диагностика и замена амортизаторов</p>
+          </div>
+
+          <div
+            class="service-card bg-gray p-6 rounded-lg transition-all duration-300 border-l-4 border-primary"
+            data-category="service"
+          >
+            <h3 class="text-xl font-semibold mb-2">Ремонт пневмосистемы</h3>
+            <p class="text-gray-400">Ремонт пневматической подвески</p>
+          </div>
+
+          <div
+            class="service-card bg-gray p-6 rounded-lg transition-all duration-300 border-l-4 border-primary"
+            data-category="service"
+          >
+            <h3 class="text-xl font-semibold mb-2">Удаление катализаторов</h3>
+            <p class="text-gray-400">Замена или удаление катализаторов</p>
+          </div>
+
+          <div
+            class="service-card bg-gray p-6 rounded-lg transition-all duration-300 border-l-4 border-primary"
+            data-category="service"
+          >
+            <h3 class="text-xl font-semibold mb-2">Восстановление рычагов</h3>
+            <p class="text-gray-400">Ремонт и замена рычагов подвески</p>
+          </div>
+
+          <div
+            class="service-card bg-gray p-6 rounded-lg transition-all duration-300 border-l-4 border-primary"
+            data-category="service"
+          >
+            <h3 class="text-xl font-semibold mb-2">Ремонт катализаторов</h3>
+            <p class="text-gray-400">
+              Восстановление каталитических нейтрализаторов
+            </p>
+          </div>
+
+          <div
+            class="service-card bg-gray p-6 rounded-lg transition-all duration-300 border-l-4 border-primary"
+            data-category="service"
+          >
+            <h3 class="text-xl font-semibold mb-2">Установка парктроника</h3>
+            <p class="text-gray-400">Монтаж и настройка парковочных систем</p>
+          </div>
+
+          <div
+            class="service-card bg-gray p-6 rounded-lg transition-all duration-300 border-l-4 border-primary"
+            data-category="service"
+          >
+            <h3 class="text-xl font-semibold mb-2">
+              Установка доп. оборудования
+            </h3>
+            <p class="text-gray-400">Монтаж дополнительного оборудования</p>
+          </div>
+
+          <div
+            class="service-card bg-gray p-6 rounded-lg transition-all duration-300 border-l-4 border-primary"
+            data-category="service"
+          >
+            <h3 class="text-xl font-semibold mb-2">Запчасти под заказ</h3>
+            <p class="text-gray-400">
+              Поставка оригинальных и аналоговых запчастей
+            </p>
+          </div>
+        </div>
+        <div id="show-more-container" class="mt-8 text-center">
+          <button
+            id="show-more-services"
+            class="bg-gray hover:bg-primary text-light hover:text-white font-semibold py-3 px-6 rounded-md transition"
+          >
+            Показать больше услуг
+          </button>
+        </div>
+        <div class="text-center mt-10">
+          <a
+            href="#contact"
+            class="bg-primary inline-block px-8 py-3 rounded-md font-semibold"
+            >Получить консультацию</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Advantages -->
+    <section id="advantages" class="py-16 bg-gray">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">
+            Наши <span class="text-primary">преимущества</span>
+          </h2>
+          <p class="text-lightgray max-w-2xl mx-auto">
+            Почему клиенты выбирают именно нас для обслуживания своих
+            автомобилей.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Advantage 1 -->
+          <div
+            class="bg-dark gray p-8 rounded-lg text-center hover:transform hover:scale-105 transition-all duration-300"
+          >
+            <div
+              class="text-primary mb-4 inline-flex items-center justify-center w-16 h-16 rounded-full bg-gray"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-8 w-8"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Гарантия на все работы</h3>
+            <p class="text-gray-400">
+              Мы предоставляем гарантию на все выполненные работы
+            </p>
+          </div>
+
+          <!-- Advantage 2 -->
+          <div
+            class="bg-dark gray p-8 rounded-lg text-center hover:transform hover:scale-105 transition-all duration-300"
+          >
+            <div
+              class="text-primary mb-4 inline-flex items-center justify-center w-16 h-16 rounded-full bg-gray"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-8 w-8"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Соблюдение сроков</h3>
+            <p class="text-gray-400">
+              Мы ценим ваше время и всегда выполняем работы в оговоренные сроки
+            </p>
+          </div>
+
+          <!-- Advantage 3 -->
+          <div
+            class="bg-dark gray p-8 rounded-lg text-center hover:transform hover:scale-105 transition-all duration-300"
+          >
+            <div
+              class="text-primary mb-4 inline-flex items-center justify-center w-16 h-16 rounded-full bg-gray"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-8 w-8"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Прозрачные цены</h3>
+            <p class="text-gray-400">
+              Никаких скрытых платежей и дополнительных расходов после
+              согласования
+            </p>
+          </div>
+
+          <!-- Advantage 4 -->
+          <div
+            class="bg-dark kgray p-8 rounded-lg text-center hover:transform hover:scale-105 transition-all duration-300"
+          >
+            <div
+              class="text-primary mb-4 inline-flex items-center justify-center w-16 h-16 rounded-full bg-gray"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-8 w-8"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
+                />
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Качественные запчасти</h3>
+            <p class="text-gray-400">
+              Мы используем только оригинальные или качественные аналоговые
+              запчасти
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section id="portfolio" class="py-16 bg-dark">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">
+            Наши <span class="text-primary">работы</span>
+          </h2>
+          <p class="text-lightgray max-w-2xl mx-auto">
+            Примеры выполненных нами работ по ремонту и обслуживанию
+            автомобилей.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Portfolio Item 1 -->
+          <div class="overflow-hidden rounded-lg">
+            <img
+              src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1032&q=80"
+              alt="Ремонт двигателя"
+              class="w-full h-64 object-cover transition duration-300 ease-in-out transform hover:scale-110"
+            />
+          </div>
+
+          <!-- Portfolio Item 2 -->
+          <div class="overflow-hidden rounded-lg">
+            <img
+              src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1283&q=80"
+              alt="Кузовной ремонт"
+              class="w-full h-64 object-cover transition duration-300 ease-in-out transform hover:scale-110"
+            />
+          </div>
+
+          <!-- Portfolio Item 3 -->
+          <div class="overflow-hidden rounded-lg">
+            <img
+              src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+              alt="Диагностика"
+              class="w-full h-64 object-cover transition duration-300 ease-in-out transform hover:scale-110"
+            />
+          </div>
+
+          <!-- Portfolio Item 4 -->
+          <div class="overflow-hidden rounded-lg">
+            <img
+              src="https://images.unsplash.com/photo-1625047509248-ec889cbff17f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80"
+              alt="Замена масла"
+              class="w-full h-64 object-cover transition duration-300 ease-in-out transform hover:scale-110"
+            />
+          </div>
+
+          <!-- Portfolio Item 5 -->
+          <div class="overflow-hidden rounded-lg">
+            <img
+              src="https://images.unsplash.com/photo-1599256872237-5dcc0fbe9668?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80"
+              alt="Ремонт подвески"
+              class="w-full h-64 object-cover transition duration-300 ease-in-out transform hover:scale-110"
+            />
+          </div>
+
+          <!-- Portfolio Item 6 -->
+          <div class="overflow-hidden rounded-lg">
+            <img
+              src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80"
+              alt="Покраска автомобиля"
+              class="w-full h-64 object-cover transition duration-300 ease-in-out transform hover:scale-110"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Work Process -->
+    <section id="process" class="py-16 bg-gray">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">
+            Как мы <span class="text-primary">работаем</span>
+          </h2>
+          <p class="text-lightgray max-w-2xl mx-auto">
+            Простой и понятный процесс сотрудничества с нашим автосервисом.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Process Step 1 -->
+          <div class="process-step text-center">
+            <div
+              class="step-number bg-dark text-light w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 transition duration-300"
+            >
+              01
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Заявка</h3>
+            <p class="text-lightgray">
+              Оставьте заявку позвонив нам по телефону.
+            </p>
+          </div>
+
+          <!-- Process Step 2 -->
+          <div class="process-step text-center">
+            <div
+              class="step-number bg-dark text-light w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 transition duration-300"
+            >
+              02
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Диагностика</h3>
+            <p class="text-lightgray">
+              Мы проведем диагностику вашего автомобиля и определим проблему.
+            </p>
+          </div>
+
+          <!-- Process Step 3 -->
+          <div class="process-step text-center">
+            <div
+              class="step-number bg-dark text-light w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 transition duration-300"
+            >
+              03
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Согласование</h3>
+            <p class="text-lightgray">
+              Согласуем с вами стоимость и сроки выполнения работ.
+            </p>
+          </div>
+
+          <!-- Process Step 4 -->
+          <div class="process-step text-center">
+            <div
+              class="step-number bg-dark text-light w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 transition duration-300"
+            >
+              04
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Выполнение работ</h3>
+            <p class="text-lightgray">
+              Выполняем ремонт качественно и в срок, с гарантией на все работы.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="contact" class="py-16 bg-dark">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">
+            Связаться с <span class="text-primary">нами</span>
+          </h2>
+          <p class="text-lightgray max-w-2xl mb-4 mx-auto">
+            Свяжитесь с нами для получения консультации или записи на ремонт
+          </p>
+          <a
+            href="tel:+79778877109"
+            class="bg-primary hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-md transition text-center"
+            >Записаться на ремонт</a
+          >
+        </div>
+
+        <div class="flex flex-col lg:flex-row gap-8">
+          <div class="lg:w-1/2">
+            <div
+              class="rounded-lg"
+              id="map"
+              style="width: 100%; height: 600px"
+            ></div>
+          </div>
+
+          <div class="lg:w-1/2">
+            <div class="bg-gray rounded-lg p-8 h-full">
+              <h3 class="text-2xl font-semibold mb-6">Контактная информация</h3>
+
+              <div class="space-y-6">
+                <div class="flex items-start">
+                  <div class="text-primary mr-4">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-6 w-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                      />
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 class="text-light font-semibold mb-1">Адрес</h4>
+                    <p class="text-lightgray">
+                      Центральная улица, 4с4, посёлок Зверосовхоза, городской
+                      округ Пушкинский, Московская область
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex items-start">
+                  <div class="text-primary mr-4">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-6 w-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 class="text-light font-semibold mb-1">Телефон</h4>
+                    <p class="text-lightgray">+7 (977) 887-71-09</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start">
+                  <div class="text-primary mr-4">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-6 w-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 class="text-light font-semibold mb-1">Email</h4>
+                    <p class="text-lightgray">info@avto-master.ru</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start">
+                  <div class="text-primary mr-4">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-6 w-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 class="text-light font-semibold mb-1">Часы работы</h4>
+                    <p class="text-lightgray">Пн-Пт: 9:00 - 20:00</p>
+                    <p class="text-lightgray">Сб: 10:00 - 18:00</p>
+                    <p class="text-lightgray">Вс: выходной</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-8">
+                <h4 class="text-light font-semibold mb-4">
+                  Мы в социальных сетях
+                </h4>
+                <div class="flex space-x-4">
+                  <a
+                    href="#"
+                    class="text-lightgray hover:text-primary transition"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-6 w-6"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                      />
+                    </svg>
+                  </a>
+                  <a
+                    href="#"
+                    class="text-lightgray hover:text-primary transition"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-6 w-6"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"
+                      />
+                    </svg>
+                  </a>
+                  <a
+                    href="#"
+                    class="text-lightgray hover:text-primary transition"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-6 w-6"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"
+                      />
+                    </svg>
+                  </a>
+                  <a
+                    href="#"
+                    class="text-lightgray hover:text-primary transition"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-6 w-6"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"
+                      />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-8">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="mb-4 md:mb-0">
+            <div class="text-primary font-bold text-2xl">
+              АВТО-<span class="text-light">МАСТЕР</span>
+            </div>
+            <p class="text-lightgray mt-2">
+              Профессиональный ремонт автомобилей
+            </p>
+          </div>
+
+          <div class="text-center mb-4 md:mb-0">
+            <p class="text-lightgray">
+              &copy; 2025 Авто-Мастер. Все права защищены.
+            </p>
+          </div>
+
+          <div class="text-right">
+            <a
+              href="tel:+79778877109"
+              class="text-primary font-semibold hover:text-light transition"
+              >+7 (977) 887-71-09</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a
+      href="#"
+      id="back-to-top"
+      class="fixed bottom-6 right-6 bg-primary hover:bg-red-700 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition duration-300 opacity-0 invisible"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M5 15l7-7 7 7"
+        />
+      </svg>
+    </a>
+
+    <!-- JavaScript -->
+    <script>
+      // Mobile Menu Toggle
+      const mobileMenuButton = document.getElementById("mobile-menu-button");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      mobileMenuButton.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      // Close mobile menu when clicking on a link
+      const mobileLinks = mobileMenu.querySelectorAll("a");
+      mobileLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.add("hidden");
+        });
+      });
+      // Фильтрация услуг с ограничением количества карточек
+      const serviceFilters = document.querySelectorAll(".service-filter");
+      const serviceCards = document.querySelectorAll(".service-card");
+      const showMoreBtn = document.getElementById("show-more-services");
+      let currentCategory = "all";
+      let showAll = false;
+      const maxVisibleCards = 10; // Показываем по 10 карточек
+
+      // Функция для обновления отображения карточек
+      function updateServiceCards() {
+        let visibleCount = 0;
+        const totalInCategory = Array.from(serviceCards).filter(
+          (card) =>
+            currentCategory === "all" ||
+            card.getAttribute("data-category") === currentCategory
+        ).length;
+
+        serviceCards.forEach((card) => {
+          const cardCategory = card.getAttribute("data-category");
+          const shouldShow =
+            (currentCategory === "all" || cardCategory === currentCategory) &&
+            (showAll || visibleCount < maxVisibleCards);
+
+          card.style.display = shouldShow ? "block" : "none";
+
+          if (shouldShow) visibleCount++;
+        });
+
+        // Обновляем кнопку "Показать больше/меньше"
+        if (totalInCategory <= maxVisibleCards) {
+          showMoreBtn.style.display = "none";
+        } else {
+          showMoreBtn.style.display = "inline-block";
+          showMoreBtn.textContent = showAll
+            ? "Свернуть список"
+            : "Показать больше услуг";
+        }
+      }
+
+      // Обработчики для фильтров
+      serviceFilters.forEach((filter) => {
+        filter.addEventListener("click", () => {
+          // Удаляем активный класс со всех фильтров
+          serviceFilters.forEach((f) =>
+            f.classList.remove("active", "bg-primary")
+          );
+          serviceFilters.forEach((f) => f.classList.add("bg-dark"));
+
+          // Добавляем активный класс на текущий фильтр
+          filter.classList.add("active", "bg-primary");
+          filter.classList.remove("bg-dark");
+
+          currentCategory = filter.getAttribute("data-category");
+          showAll = false; // При смене категории сворачиваем список
+          updateServiceCards();
+        });
+      });
+
+      // Обработчик для кнопки "Показать больше/Свернуть"
+      showMoreBtn.addEventListener("click", () => {
+        showAll = !showAll; // Переключаем состояние
+        updateServiceCards();
+      });
+
+      // Инициализация при загрузке
+      document.addEventListener("DOMContentLoaded", () => {
+        updateServiceCards();
+      });
+
+      // Back to Top Button
+      const backToTopButton = document.getElementById("back-to-top");
+
+      window.addEventListener("scroll", () => {
+        if (window.pageYOffset > 300) {
+          backToTopButton.classList.remove("opacity-0", "invisible");
+          backToTopButton.classList.add("opacity-100", "visible");
+        } else {
+          backToTopButton.classList.remove("opacity-100", "visible");
+          backToTopButton.classList.add("opacity-0", "invisible");
+        }
+      });
+
+      // Form Submission
+      const contactForm = document.getElementById("contact-form");
+
+      contactForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        // Here you would normally send the form data to your server
+        // For this example, we'll just show an alert
+        alert("Спасибо за заявку! Мы свяжемся с вами в ближайшее время.");
+        contactForm.reset();
+      });
+    </script>
+  </body>
+</html>
