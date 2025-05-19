@@ -58,21 +58,21 @@
       }
     </style>
 
-      <script
-        src="https://api-maps.yandex.ru/2.1/?apikey=ed08fa90-3dd4-40fa-9622-38c2334072ba&lang=ru_RU"
-        type="text/javascript"
-      ></script>
-      <script type="text/javascript">
-        ymaps.ready(init);
-        function init() {
-          var myMap = new ymaps.Map("map", {
-            center: [56.041481, 37.977644],
-            zoom: 16,
-          });
-        }
-      </script>
-    </head>
+    <script
+      src="https://api-maps.yandex.ru/2.1/?apikey=ed08fa90-3dd4-40fa-9622-38c2334072ba&lang=ru_RU"
+      type="text/javascript"
+    ></script>
+    <script type="text/javascript">
+      ymaps.ready(init);
+      function init() {
+        var myMap = new ymaps.Map("map", {
+          center: [56.041481, 37.977644],
+          zoom: 16,
+        });
+      }
+    </script>
   </head>
+
   <body class="bg-dark text-light">
     <!-- Header -->
     <header class="fixed w-full bg-dark bg-opacity-90 z-50 shadow-md">
